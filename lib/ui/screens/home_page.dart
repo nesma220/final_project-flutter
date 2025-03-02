@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:final_project/ui/screens/HomeScreen.dart';
 import 'package:final_project/ui/screens/chat_list_screen.dart';
-import 'package:final_project/ui/screens/chat_screen.dart';
 import 'package:final_project/ui/screens/bookmark_screen.dart';
 import 'package:final_project/ui/screens/profile_page.dart';
 import 'package:final_project/view_models/home_controller.dart';
@@ -11,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -23,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _screens = [
     HomeScreen(),
     MyBookmarkScreen(),
-    ChatListScreen(),
+    const ChatListScreen(),
     ProfileScreen(),
   ];
 

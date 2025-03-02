@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:final_project/ui/screens/chat_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'search_user_screen.dart';
 
 class ChatListScreen extends StatefulWidget {
+  const ChatListScreen({super.key});
+
   @override
   _ChatListScreenState createState() => _ChatListScreenState();
 }
@@ -49,25 +50,25 @@ class _ChatListScreenState extends State<ChatListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("الرسائل"),
-        actions: [],
+        title: const Text("الرسائل"),
+        actions: const [],
       ),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.search),
-          shape: CircleBorder(),
-          backgroundColor: Color(0xFF7210FF),
+          shape: const CircleBorder(),
+          backgroundColor: const Color(0xFF7210FF),
           foregroundColor: Colors.white,
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SearchUsersScreen()),
+              MaterialPageRoute(builder: (context) => const SearchUsersScreen()),
             );
-          }),
+          },
+          child: const Icon(Icons.search)),
       body: StreamBuilder<List<Map<String, dynamic>>>(
         stream: getUserChats(),
         builder: (context, snapshot) {
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text("لا توجد رسائل حتى الآن"));
+            return const Center(child: Text("لا توجد رسائل حتى الآن"));
           }
           var chats = snapshot.data!;
           return ListView.builder(
@@ -82,7 +83,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                 future: _firestore.collection('users').doc(otherUserId).get(),
                 builder: (context, userSnapshot) {
                   if (!userSnapshot.hasData) {
-                    return ListTile(
+                    return const ListTile(
                       leading: CircleAvatar(child: Icon(Icons.person)),
                       title: Text("تحميل..."),
                       subtitle: Text(""),
@@ -97,16 +98,16 @@ class _ChatListScreenState extends State<ChatListScreen> {
                           : null,
                       child: user['profilePicture'] == null ||
                               user['profilePicture'] == ''
-                          ? Icon(Icons.person)
+                          ? const Icon(Icons.person)
                           : null,
                     ),
                     title: Text(
                       user['fullName'],
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                      style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
                     trailing: Text(
                       formatTimestamp(chat['lastMessageTime']),
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                     subtitle: Row(
                       children: [
@@ -114,15 +115,15 @@ class _ChatListScreenState extends State<ChatListScreen> {
                         if (chat['unreadCount_$currentUserId'] != null &&
                             chat['unreadCount_$currentUserId'] > 0)
                           Container(
-                            padding: EdgeInsets.all(6),
-                            margin: EdgeInsets.only(left: 8),
-                            decoration: BoxDecoration(
+                            padding: const EdgeInsets.all(6),
+                            margin: const EdgeInsets.only(left: 8),
+                            decoration: const BoxDecoration(
                               color: Color(0xFF7210FF),
                               shape: BoxShape.circle,
                             ),
                             child: Text(
                               "${chat['unreadCount_$currentUserId']}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -130,14 +131,14 @@ class _ChatListScreenState extends State<ChatListScreen> {
                       ],
                     ),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ChatDetailScreen(
-                            receiverId: otherUserId,
-                          ),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => ChatDetailScreen(
+                      //       receiverId: otherUserId,
+                      //     ),
+                      //   ),
+                      // );
                     },
                   );
                 },

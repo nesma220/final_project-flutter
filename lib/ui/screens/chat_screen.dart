@@ -14,7 +14,7 @@ import 'package:just_audio/just_audio.dart';
 
 class ChatDetailScreen extends StatefulWidget {
   final String receiverId;
-  const ChatDetailScreen({required this.receiverId});
+  const ChatDetailScreen({super.key, required this.receiverId});
 
   @override
   _ChatDetailScreenState createState() => _ChatDetailScreenState();
@@ -78,7 +78,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   }
 
   void listenForMessages() {
-    if (currentUser == null || otherUser == null) return;
+    if (currentUser == null) return;
 
     String chatId = currentUserId.hashCode <= widget.receiverId.hashCode
         ? "${currentUserId}_${widget.receiverId}"
@@ -221,9 +221,9 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("المحادثة")),
+      appBar: AppBar(title: const Text("المحادثة")),
       body: currentUser == null
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : DashChat(
               messageListOptions: MessageListOptions(
                   chatFooterBuilder: Padding(
@@ -235,11 +235,11 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                         alignment: AlignmentDirectional.bottomEnd,
                         child: SocialMediaRecorder(
                           sendButtonIcon: Container(
-                              padding: EdgeInsets.all(2),
+                              padding: const EdgeInsets.all(2),
                               decoration: BoxDecoration(
-                                  color: Color(0xFF7210FF),
+                                  color: const Color(0xFF7210FF),
                                   borderRadius: BorderRadius.circular(50)),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.send,
                                 size: 16,
                                 color: Colors.white,
@@ -254,7 +254,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                               canStop = false;
                             });
 
-                            await Future.delayed(Duration(milliseconds: 500));
+                            await Future.delayed(const Duration(milliseconds: 500));
                             canStop = true;
                           },
                           stopRecording: (time) {
@@ -268,11 +268,11 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                             });
                           },
                           recordIcon: Container(
-                              padding: EdgeInsets.all(2),
+                              padding: const EdgeInsets.all(2),
                               decoration: BoxDecoration(
-                                  color: Color(0xFF7210FF),
+                                  color: const Color(0xFF7210FF),
                                   borderRadius: BorderRadius.circular(50)),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.mic,
                                 size: 16,
                                 color: Colors.white,
@@ -323,7 +323,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                                             imageFile.removeAt(index);
                                             setState(() {});
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.close,
                                             color: Colors.red,
                                           )),
@@ -334,7 +334,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                             },
                             itemCount: imageFile.length),
                       ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],
@@ -351,25 +351,25 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                   setState(() {});
                 },
                 inputDecoration: InputDecoration(
-                  hintStyle: TextStyle(color: Color(0xffBEBEBE)),
+                  hintStyle: const TextStyle(color: Color(0xffBEBEBE)),
                   hintText: "Message",
                   filled: true,
-                  fillColor: Color(
+                  fillColor: const Color(
                     0xffFAFAFA,
                   ),
                   // 0xffF4ceff        //
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25),
                       borderSide:
-                          BorderSide(color: Color(0xFF7210FF), width: 2)),
+                          const BorderSide(color: Color(0xFF7210FF), width: 2)),
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                           color: Color(
                         0xffFAFAFA,
                       )),
                       borderRadius: BorderRadius.circular(25)),
                   border: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                           color: Color(
                         0xffFAFAFA,
                       )),
@@ -382,7 +382,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                             color: Theme.of(context)
                                 .colorScheme
                                 .onSurface
-                                .withValues(alpha: 0.3),
+                             //   .withValues(alpha: 0.3),
                           ))
                       : null,
                 ),
@@ -401,7 +401,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                                   color: Theme.of(context)
                                       .colorScheme
                                       .onSurface
-                                      .withValues(alpha: 0.3),
+                                  //    .withValues(alpha: 0.3),
                                 ));
                           }
                         : (vale) {
@@ -409,7 +409,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                           },
               ),
               messageOptions: MessageOptions(
-                  currentUserContainerColor: Color(0xFF7210FF),
+                  currentUserContainerColor: const Color(0xFF7210FF),
                   messageMediaBuilder: (message, previousMessage, nextMessage) {
                     return Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -439,7 +439,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                               .split(":");
 
                           return VoiceMessageView(
-                            circlesColor: Color(0xFF7210FF),
+                            circlesColor: const Color(0xFF7210FF),
                             controller: VoiceController(
                               audioSrc: toElement.url,
                               onComplete: () {
@@ -463,7 +463,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                             cornerRadius: 20,
                           );
                         } else {
-                          return SizedBox();
+                          return const SizedBox();
                         }
                       }).toList(),
                     );

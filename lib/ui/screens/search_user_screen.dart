@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SearchUsersScreen extends StatefulWidget {
+  const SearchUsersScreen({super.key});
+
   @override
   _SearchUsersScreenState createState() => _SearchUsersScreenState();
 }
@@ -59,7 +61,7 @@ class _SearchUsersScreenState extends State<SearchUsersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("البحث عن مستخدم")),
+      appBar: AppBar(title: const Text("البحث عن مستخدم")),
       body: Column(
         children: [
           Padding(
@@ -67,7 +69,7 @@ class _SearchUsersScreenState extends State<SearchUsersScreen> {
             child: TextField(
               controller: _searchController,
               onChanged: searchUser,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "ابحث عن مستخدم...",
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(),
@@ -76,7 +78,7 @@ class _SearchUsersScreenState extends State<SearchUsersScreen> {
           ),
           Expanded(
             child: filteredUsers.isEmpty
-                ? Center(child: Text("لا يوجد مستخدمون مطابقون"))
+                ? const Center(child: Text("لا يوجد مستخدمون مطابقون"))
                 : ListView.builder(
                     itemCount: filteredUsers.length,
                     itemBuilder: (context, index) {
@@ -87,7 +89,7 @@ class _SearchUsersScreenState extends State<SearchUsersScreen> {
                               ? NetworkImage(user['profilePicture'])
                               : null,
                           child: user['profilePicture'] == null
-                              ? Icon(Icons.person)
+                              ? const Icon(Icons.person)
                               : null,
                         ),
                         title: Text(user['fullName']),

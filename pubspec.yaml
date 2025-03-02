@@ -48,8 +48,12 @@ dependencies:
   flutter_map_cancellable_tile_provider: ^3.0.0
   flutter_stripe: ^11.4.0
   dio: ^5.8.0+1
-  dash_chat_custom: ^0.0.27
+  dash_chat_custom: ^0.0.29
   flutter_local_notifications: ^18.0.1
+  just_audio: ^0.9.46 
+  firebase_storage: ^12.4.4
+  social_media_recorder: ^1.2.1
+  voice_message_package: ^2.2.1
 
 dev_dependencies:
   flutter_test:

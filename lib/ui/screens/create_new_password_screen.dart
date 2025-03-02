@@ -173,7 +173,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
 
     Future.delayed(const Duration(seconds: 3), () {
       Get.back(); // Close dialog
-      Get.offAll(HomePage()); // Navigate to the main page
+      Get.offAll(const HomePage()); // Navigate to the main page
     });
   }
 }

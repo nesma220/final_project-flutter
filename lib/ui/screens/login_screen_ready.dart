@@ -153,7 +153,7 @@ class LoginScreenReady extends StatelessWidget {
                       await prefs.setString(
                           'email', controller.emaillogin.value);
                       updateFcmToken();
-                      Get.off(() => HomePage());
+                      Get.off(() => const HomePage());
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'user-not-found') {
                         Get.snackbar(
@@ -243,17 +243,17 @@ class LoginScreenReady extends StatelessWidget {
 }
 
 Future<void> updateFcmToken() async {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final FirebaseMessaging _messaging = FirebaseMessaging.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   // جلب المستخدم الحالي
-  User? user = _auth.currentUser;
+  User? user = auth.currentUser;
   if (user == null) return;
 
   // جلب رمز FCM
-  String? fcmToken = await _messaging.getToken();
-  await _firestore.collection('users').doc(user.uid).update({
+  String? fcmToken = await messaging.getToken();
+  await firestore.collection('users').doc(user.uid).update({
     'fcmToken': fcmToken,
   });
 }
