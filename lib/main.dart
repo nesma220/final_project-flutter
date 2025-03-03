@@ -32,9 +32,15 @@ void main() async {
   runApp(const MyApp());
 }
 
+
+
+//Stripe
 Future<void> _setup() async {
   Stripe.publishableKey = stripePublishableKey;
 }
+
+
+
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

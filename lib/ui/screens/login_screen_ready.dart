@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:final_project/Route/app_route.dart';
 import 'package:final_project/cor/constants.dart';
 import 'package:final_project/ui/screens/forgot_password_screen.dart';
 import 'package:final_project/ui/screens/home_page.dart';
@@ -223,12 +224,22 @@ class LoginScreenReady extends StatelessWidget {
                   const Text("Don't have an account? "),
                   GestureDetector(
                     onTap: () => Get.to(CreateAccountScreen()),
-                    child: const Text(
-                      "Sign up",
-                      style: TextStyle(
-                        color: Color(0xFF7210FF),
-                        fontWeight: FontWeight.bold,
-                      ),
+                    child: Column(
+                      children: [
+                        const Text(
+                          "Sign up",
+                          style: TextStyle(
+                            color: Color(0xFF7210FF),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextButton(
+                          child:const Text("Skip"),
+                          onPressed: () {
+                            AppRoute.homeScreen;
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ],

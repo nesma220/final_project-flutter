@@ -35,6 +35,7 @@ class AllServicesScreen extends StatelessWidget {
             crossAxisCount: 4,
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,
+          
           ),
           itemBuilder: (context, index) {
             final service = controller.services[index];

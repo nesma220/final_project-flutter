@@ -40,11 +40,16 @@ class _PickPlaceScreenState extends State<PickPlaceScreen> {
 
     if (permission == LocationPermission.deniedForever) {}
 
+// مش راح ينتقل الى السطر الحالي قبل مايجيب الموقع Geolocator الموقع الحالي للجهاز
+
     var loca = await Geolocator.getCurrentPosition();
     locasion = LatLng(loca.latitude, loca.longitude);
-    await isLocOn();
 
+    // دالة بتحقق اذا كان الموقع تم الحصول عليه
+    await isLocOn();
+// التحكم بالخريطة
     mapController.move(locasion, 15.0);
+    // هنا موجوده علشان بناء على التغيرات يعيد بناء الثصفخة
     setState(() {});
   }
 

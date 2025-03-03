@@ -90,7 +90,7 @@ class BookmarkController extends GetxController {
         '4-stars': 90,
         '3-stars': 10,
         '2-stars': 7,
-        '1-star': 3,
+        '1-stars': 3,
       }
     },
     {

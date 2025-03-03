@@ -25,5 +25,7 @@ bool isDark = false;
 String userName = "";
 String email = "";
 String profilePicture = "";
+
+
 const String stripePublishableKey = "pk_test_51Qn0XpGjlpWcjDmQ34LVJFfYUgoK6IZGBS5MB0YCGpbuKT5VxGmxlPanA0bKiYgGqXB3Vzb7K4aCtEUtRLbw2hoa00fTVHxYW0";
 const String stripeSecretKey = "sk_test_51Qn0XpGjlpWcjDmQgKdcPSxa8vPCFRFTg7kxOawXwZgGSRQ26Dx0IvsNDDaWgs1qfXyeSVpUoqJ68MMAssrALVsy00sQa32YZK";
